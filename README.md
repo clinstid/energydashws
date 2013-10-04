@@ -1,7 +1,7 @@
 energydashws
 ============
 
-Web Service for Energydash using:
+Web Service for [Energydash](https://github.com/clinstid/energydash) using:
 
 * MongoDB driver with Morphia for Persistence
 * JUnit testing
