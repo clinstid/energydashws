@@ -8,5 +8,6 @@ Web Service for Energydash using:
 
 Left to do:
 
+* Move the configuration out to XML instead of hardcoded in the MongoDB class
 * Build the RESTful API
 
