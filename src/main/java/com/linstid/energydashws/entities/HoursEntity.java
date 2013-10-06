@@ -4,10 +4,13 @@ import java.util.Date;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.Property;
+import java.io.Serializable;
 
 @Entity(value = "hours", noClassnameStored = true)
-public class HoursEntity
+public class HoursEntity implements Serializable
 {
+	private static final long serialVersionUID = -3789867364759427063L;
+
 	@Id 
 	private Date id;
 	
