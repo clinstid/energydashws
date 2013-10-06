@@ -1,19 +1,18 @@
 package com.linstid.energydashws.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
-import java.util.Date;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.google.code.morphia.Datastore;
+import com.linstid.energydashws.entities.HoursEntity;
 import com.linstid.energydashws.persistence.MongodbPersistence;
 import com.linstid.energydashws.persistence.Persistence;
-import com.linstid.energydashws.entities.HoursEntity;
 
 public class HoursTest {
 
