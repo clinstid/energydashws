@@ -16,24 +16,24 @@ import javax.ws.rs.core.UriInfo;
 import com.linstid.energydashws.entities.HoursEntity;
 import com.linstid.energydashws.persistence.MongodbPersistence;
 
-import org.jboss.logging.Logger;
+// import org.jboss.logging.Logger;
 
 @Path("/hours")
 public class Hours {
 	@Context
 	private UriInfo context;
 
-	private Logger logger;
+//	private Logger logger;
 	
 	public Hours() {
-		this.logger = Logger.getLogger(this.getClass());
+//		this.logger = Logger.getLogger(this.getClass());
 	}
 
 	@GET
 	@Path("/{start}&{end}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<HoursEntity> getHoursRange(@PathParam("start") String start, @PathParam("end") String end) {
-		logger.info("getting hours for " + start + " --> " + end);
+//		logger.info("getting hours for " + start + " --> " + end);
 		
 		Date startDate = new Date();
 		Date endDate = new Date();
@@ -42,14 +42,14 @@ public class Hours {
 			startDate.setTime(Long.parseLong(start) * 1000);
 		} catch (NumberFormatException e) {
 			String err = "Failed to parse start date of " + start + ": " + e;
-			logger.error(err);
+//			logger.error(err);
 			throw new WebApplicationException(Response.Status.BAD_REQUEST);
 		}
 		try {
 			endDate.setTime(Long.parseLong(end) * 1000);
 		} catch (NumberFormatException e) {
 			String err = "Failed to parse end date of " + end + ": " + e;
-			logger.error(err);
+//			logger.error(err);
 			throw new WebApplicationException(Response.Status.BAD_REQUEST);
 		}
 		
