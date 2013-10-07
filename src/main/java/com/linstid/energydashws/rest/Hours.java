@@ -34,6 +34,7 @@ public class Hours {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<HoursEntity> getHoursRange(@PathParam("start") String start, @PathParam("end") String end) {
 //		logger.info("getting hours for " + start + " --> " + end);
+		System.out.println("getting hours for " + start + " --> " + end);
 		
 		Date startDate = new Date();
 		Date endDate = new Date();
@@ -43,6 +44,7 @@ public class Hours {
 		} catch (NumberFormatException e) {
 			String err = "Failed to parse start date of " + start + ": " + e;
 //			logger.error(err);
+			System.out.println(err);
 			throw new WebApplicationException(Response.Status.BAD_REQUEST);
 		}
 		try {
@@ -50,6 +52,7 @@ public class Hours {
 		} catch (NumberFormatException e) {
 			String err = "Failed to parse end date of " + end + ": " + e;
 //			logger.error(err);
+			System.out.println(err);
 			throw new WebApplicationException(Response.Status.BAD_REQUEST);
 		}
 		
