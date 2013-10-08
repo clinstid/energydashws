@@ -7,5 +7,4 @@ import com.linstid.energydashws.entities.HoursEntity;
 
 public interface Persistence {
 	List<HoursEntity> getRangeOfHours(Date start, Date end);
-
 }
