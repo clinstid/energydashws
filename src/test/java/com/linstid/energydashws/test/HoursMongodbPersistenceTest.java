@@ -14,7 +14,8 @@ import com.linstid.energydashws.entities.HoursEntity;
 import com.linstid.energydashws.persistence.MongodbPersistence;
 import com.linstid.energydashws.persistence.Persistence;
 
-public class HoursTest {
+// These tests are for the MongodbPersistence layer.
+public class HoursMongodbPersistenceTest {
 
 	private Persistence persistence;
 
