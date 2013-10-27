@@ -2,3 +2,5 @@
 .forge_settings
 .project
 .settings
+target
+java/target
