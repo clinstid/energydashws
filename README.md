@@ -1,7 +1,18 @@
 energydashws
 ============
 
-Web Service for [Energydash](https://github.com/clinstid/energydash) using:
+# Web Service for [Energydash](https://github.com/clinstid/energydash)
+
+## Python
+
+* Flask
+* flask-restful
+
+Left to do:
+
+* Implement. :)
+
+## Java
 
 * MongoDB driver with Morphia for Persistence
 * JUnit testing
