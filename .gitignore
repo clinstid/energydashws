@@ -4,3 +4,8 @@
 .settings
 target
 java/target
+/bin
+build
+.gradle
+.classpath
+*.swp

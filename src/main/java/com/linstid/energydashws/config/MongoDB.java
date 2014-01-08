@@ -16,10 +16,9 @@ public class MongoDB {
 
 	private MongoDB() {
 		try {
+			// TODO: This information should really be stored outside the code.
 			MongoClient mongoClient = new MongoClient(Arrays.asList(
-					new ServerAddress("127.0.0.1", 27017), 
-					new ServerAddress("127.0.0.1", 27018), 
-					new ServerAddress("127.0.0.1", 27019)));
+					new ServerAddress("127.0.0.1", 27018)));
 			mongoClient.setWriteConcern(WriteConcern.SAFE);
 			datastore = new Morphia().mapPackage(
 					HoursEntity.class.getPackage().getName()).createDatastore(
