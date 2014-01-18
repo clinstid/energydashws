@@ -3,6 +3,8 @@ energydashws
 
 # Web Service for [Energydash](https://github.com/clinstid/energydash)
 
+Check out the <a href="https://github.com/clinstid/energydashws/wiki">wiki</a> for details on the API and available resources.
+
 ## Java
 
 * MongoDB driver with Morphia for Persistence
