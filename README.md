@@ -11,7 +11,6 @@ energydashws
 
 Left to do:
 
-* Move the configuration out to XML instead of hardcoded in the MongoDB class
 * Build the RESTful API - Started, have an "hours" resource with a start and end parameters and "readings" resource that can give the last raw reading.
 
 ## Building
