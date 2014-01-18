@@ -19,3 +19,7 @@ dependencies {
     testCompile 'junit:junit:4.11'
 }
 
+task deploy(dependsOn: 'war', type: Copy) {
+	from war.archivePath
+	into "$System.env.JBOSS_HOME" + '/standalone/deployments'
+}

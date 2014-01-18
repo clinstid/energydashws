@@ -25,6 +25,7 @@ public class MongodbPersistence implements Persistence {
 					.filter("_id >=", start).filter("_id <=", end).order("_id")
 					.asList();
 		} catch (MongoException e) {
+			// TODO: Logging
 			System.out.println("Query failed: " + e);
 		}
 		return response;
@@ -42,8 +43,10 @@ public class MongodbPersistence implements Persistence {
 	public ReadingEntity getLastReading() {
 		ReadingEntity response = null;
 		try {
-			response = mongoDatastore.find(ReadingEntity.class).order("-_id").limit(1).get();
+			response = mongoDatastore.find(ReadingEntity.class).order("-_id")
+					.limit(1).get();
 		} catch (MongoException e) {
+			// TODO: Logging
 			System.out.println("Query failed: " + e);
 		}
 		return response;

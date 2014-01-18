@@ -12,21 +12,26 @@ import com.mongodb.WriteConcern;
 public class MongoDB {
 	private static final MongoDB INSTANCE = new MongoDB();
 	private final Datastore datastore;
-	public static final String DB_NAME = "energydash";
 
 	private MongoDB() {
+		// TODO: This information should really be stored outside the code.
+		String host = System.getProperty("MONGO_HOST", "localhost");
+		String database = System.getProperty("MONGO_DATABASE", "energydash");
+		int port = Integer.parseInt(System.getProperty("MONGO_PORT", "27018"));
+
+		MongoClient mongoClient = null;
 		try {
-			// TODO: This information should really be stored outside the code.
-			MongoClient mongoClient = new MongoClient(Arrays.asList(
-					new ServerAddress("127.0.0.1", 27018)));
-			mongoClient.setWriteConcern(WriteConcern.SAFE);
-			datastore = new Morphia().mapPackage(
-					HoursEntity.class.getPackage().getName()).createDatastore(
-					mongoClient, DB_NAME);
-			datastore.ensureIndexes();
+			mongoClient = new MongoClient(Arrays.asList(new ServerAddress(host,
+					port)));
 		} catch (Exception e) {
 			throw new RuntimeException("Error initializing mongodb", e);
 		}
+
+		mongoClient.setWriteConcern(WriteConcern.SAFE);
+		datastore = new Morphia().mapPackage(
+				HoursEntity.class.getPackage().getName()).createDatastore(
+				mongoClient, database);
+		datastore.ensureIndexes();
 	}
 
 	public static MongoDB getInstance() {
