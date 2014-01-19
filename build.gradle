@@ -20,6 +20,12 @@ dependencies {
 }
 
 task deploy(dependsOn: 'war', type: Copy) {
-	from war.archivePath
-	into "$System.env.JBOSS_HOME" + '/standalone/deployments'
+        from war.archivePath
+            into "$System.env.JBOSS_HOME" + '/standalone/deployments'
+}
+
+deploy.doLast() {
+    if (!System.env.JBOSS_HOME) {
+        throw new GradleException("JBOSS_HOME environment variable must be set in order to deploy.")
+    }
 }
