@@ -32,7 +32,7 @@ public class Readings {
 	}
 	
 	@GET
-	@Path("/range/{start}&{end}")
+	@Path("/range/start={start}&end={end}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<ReadingEntity> getReadingRange() {
 		List<ReadingEntity> response = new ArrayList<ReadingEntity>();

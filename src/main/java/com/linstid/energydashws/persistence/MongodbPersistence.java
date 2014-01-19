@@ -58,4 +58,17 @@ public class MongodbPersistence implements Persistence {
 		return null;
 	}
 
+	@Override
+	public HoursEntity getLastHour() {
+		HoursEntity response = null;
+		try {
+			response = mongoDatastore.find(HoursEntity.class).order("-_id")
+					.limit(1).get();
+		} catch (MongoException e) {
+			// TODO: Logging
+			System.out.println("Query failed: " + e);
+		}
+		return response;
+	}
+
 }

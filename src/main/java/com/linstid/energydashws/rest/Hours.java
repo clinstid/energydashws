@@ -30,7 +30,16 @@ public class Hours {
 	}
 
 	@GET
-	@Path("/{start}&{end}")
+	@Path("/last")
+	@Produces(MediaType.APPLICATION_JSON)
+	public HoursEntity getLastHour() {
+		System.out.println("Getting last hour...");
+		MongodbPersistence db = new MongodbPersistence();
+		return db.getLastHour();
+	}
+
+	@GET
+	@Path("/start={start}&end={end}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<HoursEntity> getHoursRange(@PathParam("start") String start, @PathParam("end") String end) {
 //		logger.info("getting hours for " + start + " --> " + end);
