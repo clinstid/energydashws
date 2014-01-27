@@ -14,7 +14,6 @@ public class MongoDB {
 	private final Datastore datastore;
 
 	private MongoDB() {
-		// TODO: This information should really be stored outside the code.
 		String host = System.getProperty("MONGO_HOST", "localhost");
 		String database = System.getProperty("MONGO_DATABASE", "energydash");
 		int port = Integer.parseInt(System.getProperty("MONGO_PORT", "27018"));
