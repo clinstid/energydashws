@@ -19,15 +19,15 @@ Left to do:
 
 ### Create Eclipse Project Files
 
-`$ gradle eclipse`
+`$ ./gradlew eclipse`
 
 ### Build and Run Tests
 
-`$ gradle build`
+`$ ./gradlew build`
 
 ### Build the WAR File
 
-`$ gradle war`
+`$ ./gradlew war`
 
 ### Deploy the WAR File on JBoss/Wildfly
 
@@ -37,7 +37,7 @@ I'm working with Wildfly 8 RC1 and in order to deploy to it, you'll first need t
 
 Next you can use gradle to deploy the WAR file:
 
-`$ gradle deploy`
+`$ ./gradlew deploy`
 
 When you want to run JBoss, you'll need to set the system properties for your MongoDB configuration. Add `system-properties` after the `extensions` section in standalone.xml (or domain.xml, I have only tested standalone).
 
