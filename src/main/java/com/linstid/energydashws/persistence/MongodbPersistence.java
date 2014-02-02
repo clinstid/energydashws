@@ -53,9 +53,17 @@ public class MongodbPersistence implements Persistence {
 	}
 
 	@Override
-	public List<ReadingEntity> getRangeofReadings(Date start, Date end) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ReadingEntity> getRangeOfReadings(Date start, Date end) {
+		List<ReadingEntity> response = null;
+		try {
+			response = mongoDatastore.createQuery(ReadingEntity.class)
+					.filter("reading_timestamp >=", start).filter("reading_timestamp <=", end).order("-reading_timestamp")
+					.asList();
+		} catch (MongoException e) {
+			// TODO: Logging
+			System.out.println("Query failed: " + e);
+		}
+		return response;
 	}
 
 	@Override

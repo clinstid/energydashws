@@ -18,7 +18,8 @@ dependencies {
             'org.mongodb:mongo-java-driver:2.11.3',
             'javax:javaee-api:6.0',
             'org.jboss.spec:jboss-javaee-6.0:3.0.2.Final',
-            'xalan:xalan:2.7.1'
+            'xalan:xalan:2.7.1',
+            'com.thetransactioncompany:cors-filter:1.9'
 
     testCompile 'junit:junit:4.11'
 }

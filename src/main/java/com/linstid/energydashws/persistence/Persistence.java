@@ -9,6 +9,6 @@ import com.linstid.energydashws.entities.ReadingEntity;
 public interface Persistence {
 	List<HoursEntity> getRangeOfHours(Date start, Date end);
 	ReadingEntity getLastReading();
-	List<ReadingEntity> getRangeofReadings(Date start, Date end);
 	HoursEntity getLastHour();
+	List<ReadingEntity> getRangeOfReadings(Date start, Date end);
 }
