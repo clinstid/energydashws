@@ -4,7 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import com.linstid.energydashws.entities.HoursEntity;
-import com.linstid.energydashws.entities.HoursPerDayOfWeek;
+import com.linstid.energydashws.entities.HoursInDayEntity;
+import com.linstid.energydashws.entities.HoursPerDayOfWeekEntity;
 import com.linstid.energydashws.entities.ReadingEntity;
 
 public interface Persistence {
@@ -12,6 +13,7 @@ public interface Persistence {
 	ReadingEntity getLastReading();
 	HoursEntity getLastHour();
 	List<ReadingEntity> getRangeOfReadings(Date start, Date end);
-	List<HoursPerDayOfWeek> getHoursPerDayOfWeek();
-	HoursPerDayOfWeek getHoursForSpecificDayOfWeek(String dayName);
+	List<HoursPerDayOfWeekEntity> getHoursPerDayOfWeek();
+	HoursPerDayOfWeekEntity getHoursForSpecificDayOfWeek(String dayName);
+	List<HoursInDayEntity> getHoursInDay();
 }

@@ -6,7 +6,8 @@ import java.util.List;
 import com.google.code.morphia.Datastore;
 import com.linstid.energydashws.config.MongoDB;
 import com.linstid.energydashws.entities.HoursEntity;
-import com.linstid.energydashws.entities.HoursPerDayOfWeek;
+import com.linstid.energydashws.entities.HoursInDayEntity;
+import com.linstid.energydashws.entities.HoursPerDayOfWeekEntity;
 import com.linstid.energydashws.entities.ReadingEntity;
 import com.mongodb.MongoException;
 
@@ -82,11 +83,10 @@ public class MongodbPersistence implements Persistence {
 	}
 
 	@Override
-	public List<HoursPerDayOfWeek> getHoursPerDayOfWeek() {
-		List<HoursPerDayOfWeek> response = null;
+	public List<HoursPerDayOfWeekEntity> getHoursPerDayOfWeek() {
+		List<HoursPerDayOfWeekEntity> response = null;
 		try {
-			response = mongoDatastore.createQuery(HoursPerDayOfWeek.class).asList();
-			System.out.println("list of hours per day of week: " + response);
+			response = mongoDatastore.createQuery(HoursPerDayOfWeekEntity.class).asList();
 		} catch (MongoException e) {
 			// TODO: Logging
 			System.out.println("Query failed: " + e);
@@ -95,11 +95,23 @@ public class MongodbPersistence implements Persistence {
 	}
 
 	@Override
-	public HoursPerDayOfWeek getHoursForSpecificDayOfWeek(String dayName) {
-		HoursPerDayOfWeek response = null;
+	public HoursPerDayOfWeekEntity getHoursForSpecificDayOfWeek(String dayName) {
+		HoursPerDayOfWeekEntity response = null;
 		try {
-			response = mongoDatastore.createQuery(HoursPerDayOfWeek.class)
+			response = mongoDatastore.createQuery(HoursPerDayOfWeekEntity.class)
 					.filter("_id =", dayName).get();
+		} catch (MongoException e) {
+			// TODO: Logging
+			System.out.println("Query failed: " + e);
+		}
+		return response;
+	}
+
+	@Override
+	public List<HoursInDayEntity> getHoursInDay() {
+		List<HoursInDayEntity> response = null;
+		try {
+			response = mongoDatastore.createQuery(HoursInDayEntity.class).asList();
 		} catch (MongoException e) {
 			// TODO: Logging
 			System.out.println("Query failed: " + e);

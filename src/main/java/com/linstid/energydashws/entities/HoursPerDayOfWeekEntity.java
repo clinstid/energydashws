@@ -1,7 +1,6 @@
 package com.linstid.energydashws.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Entity;
@@ -9,7 +8,7 @@ import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.Property;
 
 @Entity(value = "hours_per_dow", noClassnameStored = true)
-public class HoursPerDayOfWeek implements Serializable {
+public class HoursPerDayOfWeekEntity implements Serializable {
 
 	private static final long serialVersionUID = -6694080643228739813L;
 
@@ -22,7 +21,7 @@ public class HoursPerDayOfWeek implements Serializable {
 	private String timeZone;
 
 	@Embedded("hours")
-	private HoursFromDayOfWeek hours;
+	private HoursFromDayOfWeekEntity hours;
 
 	public void setId(String id) {
 		this.id = id;
@@ -40,11 +39,11 @@ public class HoursPerDayOfWeek implements Serializable {
 		this.timeZone = timeZone;
 	}
 
-	public HoursFromDayOfWeek getHours() {
+	public HoursFromDayOfWeekEntity getHours() {
 		return hours;
 	}
 
-	public void setHours(HoursFromDayOfWeek hours) {
+	public void setHours(HoursFromDayOfWeekEntity hours) {
 		this.hours = hours;
 	}
 }

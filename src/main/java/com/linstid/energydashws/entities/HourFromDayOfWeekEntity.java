@@ -7,7 +7,7 @@ import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Property;
 
 @Embedded
-public class HourFromDayOfWeek {
+public class HourFromDayOfWeekEntity {
 	@Property("average_usage")
 	private float averageUsage;
 	

@@ -1,20 +1,16 @@
 package com.linstid.energydashws.rest;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import com.linstid.energydashws.entities.HoursEntity;
-import com.linstid.energydashws.entities.HoursPerDayOfWeek;
+import com.linstid.energydashws.entities.HoursPerDayOfWeekEntity;
 import com.linstid.energydashws.persistence.MongodbPersistence;
 
 // import org.jboss.logging.Logger;
@@ -33,7 +29,7 @@ public class HoursPerDOW {
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<HoursPerDayOfWeek> getHoursPerDOW() {
+	public List<HoursPerDayOfWeekEntity> getHoursPerDOW() {
 		System.out.println("Getting days of week...");
 		MongodbPersistence db = new MongodbPersistence();
 		return db.getHoursPerDayOfWeek();
@@ -42,7 +38,7 @@ public class HoursPerDOW {
 	@GET
 	@Path("/day/{dayName}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public HoursPerDayOfWeek getHoursPerDOWForSpecificDay(
+	public HoursPerDayOfWeekEntity getHoursPerDOWForSpecificDay(
 			@PathParam("dayName") String dayName) {
 		System.out.println("getting day average for " + dayName);
 

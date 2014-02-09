@@ -2,18 +2,17 @@ package com.linstid.energydashws.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.Property;
 
 @Entity(value = "hours_in_day", noClassnameStored = true)
-public class HoursInDay implements Serializable {
-
-	private static final long serialVersionUID = -6694080643228739813L;
+public class HoursInDayEntity implements Serializable {
 	
 	@Id
-	private Date id;
+	private int id;
 	
 	@Property("count")
 	private int count;
@@ -23,14 +22,9 @@ public class HoursInDay implements Serializable {
 	
 	@Property("average_tempf")
 	private float averageTempF;
-
-	public Date getId() {
-		return id;
-	}
-
-	public void setId(Date id) {
-		this.id = id;
-	}
+	
+	@Property("timestamps")
+	private List<Date> timestamps;
 
 	public int getCount() {
 		return count;
@@ -54,5 +48,21 @@ public class HoursInDay implements Serializable {
 
 	public void setAverageTempF(float averageTempF) {
 		this.averageTempF = averageTempF;
+	}
+
+	public List<Date> getTimestamps() {
+		return timestamps;
+	}
+
+	public void setTimestamps(List<Date> timestamps) {
+		this.timestamps = timestamps;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
