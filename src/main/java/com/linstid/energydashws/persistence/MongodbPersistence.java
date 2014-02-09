@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.code.morphia.Datastore;
 import com.linstid.energydashws.config.MongoDB;
 import com.linstid.energydashws.entities.HoursEntity;
+import com.linstid.energydashws.entities.HoursPerDayOfWeek;
 import com.linstid.energydashws.entities.ReadingEntity;
 import com.mongodb.MongoException;
 
@@ -57,8 +58,9 @@ public class MongodbPersistence implements Persistence {
 		List<ReadingEntity> response = null;
 		try {
 			response = mongoDatastore.createQuery(ReadingEntity.class)
-					.filter("reading_timestamp >=", start).filter("reading_timestamp <=", end).order("-reading_timestamp")
-					.asList();
+					.filter("reading_timestamp >=", start)
+					.filter("reading_timestamp <=", end)
+					.order("-reading_timestamp").asList();
 		} catch (MongoException e) {
 			// TODO: Logging
 			System.out.println("Query failed: " + e);
@@ -72,6 +74,32 @@ public class MongodbPersistence implements Persistence {
 		try {
 			response = mongoDatastore.find(HoursEntity.class).order("-_id")
 					.limit(1).get();
+		} catch (MongoException e) {
+			// TODO: Logging
+			System.out.println("Query failed: " + e);
+		}
+		return response;
+	}
+
+	@Override
+	public List<HoursPerDayOfWeek> getHoursPerDayOfWeek() {
+		List<HoursPerDayOfWeek> response = null;
+		try {
+			response = mongoDatastore.createQuery(HoursPerDayOfWeek.class).asList();
+			System.out.println("list of hours per day of week: " + response);
+		} catch (MongoException e) {
+			// TODO: Logging
+			System.out.println("Query failed: " + e);
+		}
+		return response;
+	}
+
+	@Override
+	public HoursPerDayOfWeek getHoursForSpecificDayOfWeek(String dayName) {
+		HoursPerDayOfWeek response = null;
+		try {
+			response = mongoDatastore.createQuery(HoursPerDayOfWeek.class)
+					.filter("_id =", dayName).get();
 		} catch (MongoException e) {
 			// TODO: Logging
 			System.out.println("Query failed: " + e);
